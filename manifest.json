@@ -2,20 +2,20 @@
   "name": "Evolution Team Retreat Itinerary",
   "short_name": "Retreat Itinerary",
   "description": "Corporate itinerary page for Evolution team retreats",
-  "start_url": "/",
+  "start_url": "/itinerary/",
   "display": "standalone",
   "background_color": "#f9fafb",
   "theme_color": "#1e3a8a",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/itinerary/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/itinerary/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"

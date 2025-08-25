@@ -8,8 +8,8 @@ self.addEventListener('install', (event) => {
         console.log('Service worker installed');
         // Cache the basic shell files
         return cache.addAll([
-          '/',
-          '/manifest.json'
+          '/itinerary/',
+          '/itinerary/manifest.json'
         ]).catch((error) => {
           console.log('Cache addAll failed:', error);
         });
@@ -55,7 +55,7 @@ self.addEventListener('fetch', (event) => {
           .catch(() => {
             // If fetch fails (offline), try to return cached version
             if (event.request.mode === 'navigate') {
-              return caches.match('/');
+              return caches.match('/itinerary/');
             }
             // For other requests, return undefined (will result in network error)
             return new Response('Offline', {
@@ -87,8 +87,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'Upcoming event reminder',
-    icon: '/icon-192x192.png',
-    badge: '/icon-192x192.png',
+    icon: '/itinerary/icon-192x192.png',
+    badge: '/itinerary/icon-192x192.png',
     vibrate: [200, 100, 200],
     tag: 'retreat-reminder',
     requireInteraction: true,
@@ -96,7 +96,7 @@ self.addEventListener('push', (event) => {
       {
         action: 'view',
         title: 'View Schedule',
-        icon: '/icon-192x192.png'
+        icon: '/itinerary/icon-192x192.png'
       }
     ]
   };
@@ -112,7 +112,7 @@ self.addEventListener('notificationclick', (event) => {
 
   if (event.action === 'view') {
     event.waitUntil(
-      clients.openWindow('/')
+      clients.openWindow('/itinerary/')
     );
   }
 });
